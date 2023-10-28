@@ -1,18 +1,21 @@
-let rectangle = document.querySelector(".center");
-const { left, right } = rectangle.getBoundingClientRect();
+const center = document.querySelector('.center');
 
-function colorRectangle() {
-  rectangle.addEventListener("mousemove", (dets) => {
-    let DistanceFromCenterIs = (left + right) / 2 - dets.clientX;
-    let distanceInPercentage =
-      (DistanceFromCenterIs / (right - (left + right) / 2)) * 100;
-    let percentageForColor = 255 * (distanceInPercentage / 100);
-    if (dets.clientX <= (left + right) / 2) {
-      rectangle.style.backgroundColor = `rgb(${percentageForColor},0,0)`;
-    } else {
-      rectangle.style.backgroundColor = `rgb(0,0,${percentageForColor * -1})`;
+const {left, right} = center.getBoundingClientRect();
+
+function colorRectangle (){
+
+    center.addEventListener('mousemove', (dets) => {
+    let avarage = (left + right) /2
+    let centerDistance = (avarage - dets.clientX)
+    let disParcent = (centerDistance / (right - avarage));
+    let color = 255 * disParcent
+
+    if(dets.clientX <= (avarage)){
+        center.style.backgroundColor = `rgb(${color},0,0)`
+    }else{
+        center.style.backgroundColor = `rgb(0,0,${color * -1})`
     }
-  });
+    })
 }
-colorRectangle();
 
+colorRectangle();
